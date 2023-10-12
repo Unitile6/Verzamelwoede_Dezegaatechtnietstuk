@@ -23,6 +23,23 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             return View();
         }
 
+        public IActionResult Item()
+        {
+            return View();
+        }
+
+        public IActionResult Filter()
+        {
+            return View();
+        }
+
+        public IActionResult Category()
+        {
+            return View();
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
