@@ -48,7 +48,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Name"); // Hier.
             return View();
         }
 
@@ -65,7 +65,10 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", item.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Name", item.CategoryId); // Hier
+
+
+
             return View(item);
         }
 
