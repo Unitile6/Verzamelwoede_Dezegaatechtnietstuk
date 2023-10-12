@@ -38,6 +38,16 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             return View();
         }
 
+        public IActionResult HiddenArea()
+        {
+            return View();
+        }
+
+        public IActionResult Secret()
+        {
+            return View();
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
