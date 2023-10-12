@@ -5,4 +5,39 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    @{
+        Random roll = new Random();
+        int result = roll.Next();
+        result = result % 5;
+        switch(result)
+        {
+            case 0:
+                {
+                    <p>Joke of the day: The generation of random numbers is too important to be left to chance.</p>
+                    break;
+                }
+            case 1:
+                {
+                    <p>Joke of the day: Komt een man bij de zuivelslager. Boterham.</p>
+                    break;
+                }
+            case 2:
+                {
+                    <p>Joke of the day: Komt een gabber bij de slager. "Heb je nog gehakt?".</p>
+                    break;
+                }
+            case 3:
+                {
+                    <p>Joke of the day: Stapt een jood onder de douche. Wat denk je? Nat. </p>
+                    break;
+                }
+            default:
+                {
+                    <p>Joke of the day: Komt een clown onder de bus. Niet grappig.</p>
+                    break;
+                }
+        }
+
+    }
 </div>
