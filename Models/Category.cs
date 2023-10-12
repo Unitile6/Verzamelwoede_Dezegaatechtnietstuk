@@ -1,10 +1,13 @@
-﻿namespace Verzamelwoede_NonBroken.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Verzamelwoede_NonBroken.Models
 {
     public class Category
     {
         /// <summary>
         /// Unique Identifier for the database.
         /// </summary>
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
