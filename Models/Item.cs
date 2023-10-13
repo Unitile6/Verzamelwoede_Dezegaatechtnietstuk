@@ -38,7 +38,7 @@ namespace Verzamelwoede_NonBroken.Models
         /// <summary>
         /// Image url.
         /// </summary>
-        public byte? Imageurl { get; set; }
+        public string? Imageurl { get; set; }
 
         /// <summary>
         /// Price associated with the item.

@@ -1,4 +1,6 @@
-﻿namespace Verzamelwoede_NonBroken.Models
+﻿using Microsoft.Build.Framework;
+
+namespace Verzamelwoede_NonBroken.Models
 {
     public class Filter
     {
@@ -10,6 +12,7 @@
         /// <summary>
         /// Name of the object.
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
@@ -20,6 +23,11 @@
         public Filter(string name)
         {
             Name = name;
+        }
+
+        public Filter()
+        {
+
         }
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +14,12 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ItemsController(ApplicationDbContext context)
+        public ItemsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment ;
         }
 
         // GET: Items
@@ -48,7 +51,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Name"); // Hier.
+            ViewData["Category"] = new SelectList(_context.Category, "Id", "Name");
             return View();
         }
 
@@ -57,18 +60,45 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Imageurl,Price,UsesPerYear,Value")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile picture)
         {
             if (ModelState.IsValid)
             {
+                if (picture != null && picture.Length > 0)
+                {
+                    // Genereer een unieke bestandsnaam om conflicten te voorkomen
+                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + picture.FileName;
+                    // Bepaal het pad waar het bestand moet worden opgeslagen binnen de wwwroot-map
+                    string imagesFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                    // Controleer of de map bestaat, zo niet, maak deze aan
+                    if (!Directory.Exists(imagesFolder))
+                    {
+                        Directory.CreateDirectory(imagesFolder);
+                    }
+
+
+
+                    // Bepaal het volledige pad van het bestand
+                    string filePath = Path.Combine(imagesFolder, uniqueFileName);
+
+
+
+                    // Kopieer het bestand naar de opgegeven locatie
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await picture.CopyToAsync(stream);
+                    }
+
+
+
+                    // Wijs de bestandsnaam toe aan het 'Picture'-veld van het item
+                    item.Imageurl = uniqueFileName;
+                }
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Name", item.CategoryId); // Hier
-
-
-
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Id", item.CategoryId);
             return View(item);
         }
 
@@ -85,7 +115,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", item.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Id", item.CategoryId);
             return View(item);
         }
 
