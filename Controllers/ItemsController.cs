@@ -75,22 +75,13 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
                     {
                         Directory.CreateDirectory(imagesFolder);
                     }
-
-
-
                     // Bepaal het volledige pad van het bestand
                     string filePath = Path.Combine(imagesFolder, uniqueFileName);
-
-
-
                     // Kopieer het bestand naar de opgegeven locatie
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await picture.CopyToAsync(stream);
                     }
-
-
-
                     // Wijs de bestandsnaam toe aan het 'Picture'-veld van het item
                     item.Imageurl = uniqueFileName;
                 }
