@@ -1,7 +1,9 @@
-﻿@model Verzamelwoede_NonBroken.Models.Item
+﻿@using Verzamelwoede_NonBroken.Models;
+@model Verzamelwoede_NonBroken.Models.Item
 
 @{
     ViewData["Title"] = "Create";
+    var filters = ViewData["Filters"] as List<Filter>;
 }
 
 <h1>Create</h1>
@@ -28,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Imageurl" class="control-label"></label>
-                <input asp-for="Imageurl" class="form-control" type="file" name="Image" />
+                <input asp-for="Imageurl" class="form-control" type="file" name="Image" enctype="multipart/form-data" />
                 <span asp-validation-for="Imageurl" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,6 +47,22 @@
                 <label asp-for="Value" class="control-label"></label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="Filters" class="form-select">
+                </select>
+                @foreach (var filter in filters)
+                {
+                    <label>
+                        <input type="checkbox" name="Filters.SelectedCategories" value="@filter" />
+                        @filter
+                    </label>
+
+                    <br />
+                }
+                @*
+                <label asp-for="filters" class="control-label"></label>
+                <select asp-for="filters" class="form-control" asp-items="ViewBag.Filters"></select>*@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

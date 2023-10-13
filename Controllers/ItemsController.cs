@@ -19,7 +19,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         public ItemsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment ;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: Items
@@ -52,6 +52,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
+         //   var test = _context.Filter.ToList();
+            ViewData["Filters"] = _context.Filter.ToList(); // Haalt alle filters uit database mee naar .
             return View();
         }
 
@@ -60,7 +62,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile picture)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile picture)
         {
             if (ModelState.IsValid)
             {
@@ -75,6 +77,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
                     {
                         Directory.CreateDirectory(imagesFolder);
                     }
+
                     // Bepaal het volledige pad van het bestand
                     string filePath = Path.Combine(imagesFolder, uniqueFileName);
                     // Kopieer het bestand naar de opgegeven locatie
