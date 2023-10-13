@@ -51,7 +51,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
-            ViewData["Category"] = new SelectList(_context.Category, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             return View();
         }
 
