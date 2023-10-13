@@ -39,6 +39,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
 
             var item = await _context.Item
                 .Include(i => i.Category)
+                .ThenInclude(t => t.Name)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
