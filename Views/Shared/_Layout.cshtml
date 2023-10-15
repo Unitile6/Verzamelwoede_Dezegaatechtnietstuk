@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Verzamelwoede_Dezegaatechtnietstuk</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Verzamelwoede Less Is More</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,26 +23,57 @@
                 <div class="navbar-expand-sm collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house"></i>&nbsp Home</a>
+                            <div class="btn-group">
+                                <a class="btn btn-outline-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                                    <i class="bi bi-house"></i>&nbsp Home
+                                </a>
+                                <button type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                            <i class="bi bi-incognito"></i>&nbsp Privacy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-dark" asp-area="" asp-controller="Home" asp-action="Privacy"><i class="bi bi-incognito"></i>&nbsp Privacy</a>
+                            <a class="btn btn-outline-secondary" asp-area="" asp-controller="Items" asp-action="Index">
+                                <i class="bi bi-boxes"></i>&nbsp Items
+                            </a>
+                            <div class="btn-group">
+                                <a class="btn btn-outline-secondary" asp-area="" asp-controller="Filters" asp-action="Index">
+                                    <i class="bi bi-filter"></i>&nbsp Filters
+                                </a>
+                                <a class="btn btn-outline-secondary" asp-area="" asp-controller="Categories" asp-action="Index">
+                                    <i class="bi bi-inboxes"></i>&nbsp Categories
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary" asp-area="" asp-controller="Items" asp-action="Index"><i class="bi bi-boxes"></i>&nbsp Items</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-secondary" asp-area="" asp-controller="Filters" asp-action="Index"><i class="bi bi-filter"></i>&nbsp Filters</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-dark" asp-area="" asp-controller="Categories" asp-action="Index"><i class="bi bi-inboxes"></i>&nbsp Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-outline-danger" asp-area="" asp-controller="Home" asp-action="Error"><i class="bi bi-database-exclamation"></i>&nbsp Error</a>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="bi bi-database-exclamation"></i>&nbsp Information
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Error">
+                                            <i class="bi bi-database-exclamation"></i>&nbsp Error
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="History">
+                                            <i class="bi bi-clock"></i>&nbsp History
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
+
             </div>
         </nav>
     </header>
@@ -58,7 +89,7 @@
         </div>
         <img src="images/logo.png" class="logo" usemap="#workmap" />
         <map name="workmap">
-            <area shape="circle" coords="25,25,10" href="Secret.html" onclick="myFunction()" alt="nop.">
+            <area shape="circle" coords="25,25,10" href="Home/Secret.cshtml" onclick="myFunction()" alt="nop.">
         </map>
 
         <script>
@@ -66,6 +97,13 @@
                 alert("Geheimpje gevonden!");
             }
         </script> 
+
+        <select id="styleSelect">
+            <option value="css/FlatBS.css">Flat Bootstrap</option>
+            <option value="css/flatly.css">Flatly</option>
+            <option value="css/NeutronBS.css">Neutron Bootstrap</option>
+            <!-- Add more options for each stylesheet -->
+        </select>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
