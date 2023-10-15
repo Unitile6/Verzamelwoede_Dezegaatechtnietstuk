@@ -54,7 +54,7 @@ body {
     font-size: 32px;
     color: red;
 }
-
+/* De nieuwe container maakte het kapot. Dus moet zijn eigen classname krijgen
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr [a] 1fr 1fr;
@@ -77,4 +77,4 @@ body {
 
 .Filters {
     grid-area: Filters;
-}
+}*/
