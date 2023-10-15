@@ -48,3 +48,33 @@ body {
 .HistoryPage{
     background-color: gray;
 }
+
+.navbar-brand-B
+{
+    font-size: 32px;
+    color: red;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr [a] 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Text Text Image Image"
+        "Text Text Image Image"
+        "Filters Filters Filters Filters";
+}
+
+.Image {
+    grid-area: Image;
+}
+
+.Text {
+    grid-area: Text;
+}
+
+.Filters {
+    grid-area: Filters;
+}
