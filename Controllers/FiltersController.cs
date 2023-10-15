@@ -36,6 +36,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             }
 
             var filter = await _context.Filter
+                .Include(o => o.Items)
+                //.ThenInclude(i => i.Name)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (filter == null)
             {

@@ -6,6 +6,13 @@
     var filters = ViewData["Filters"] as List<Filter>;
 }
 
+@*@using (Html.BeginForm("Create", "ControllerName", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!-- Your form elements here -->
+    <input type="file" name="picture" />
+    <input type="submit" value="Submit" />
+}*@
+
 <h1>Create</h1>
 
 <h4>Item</h4>
@@ -30,7 +37,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Imageurl" class="control-label"></label>
-                <input asp-for="Imageurl" class="form-control" type="file" name="Image" enctype="multipart/form-data" />
+                <input asp-for="Imageurl" class="form-control" type="file" name="picture" enctype="multipart/form-data" />
+                <input asp-for="Imageurl" class="form-control" type="submit" value="Submit"/>
                 <span asp-validation-for="Imageurl" class="text-danger"></span>
             </div>
             <div class="form-group">

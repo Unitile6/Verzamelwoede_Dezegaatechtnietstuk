@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Verzamelwoede_NonBroken.Models;
+using Verzamelwoede_Dezegaatechtnietstuk.Models;
 
 namespace Verzamelwoede_Dezegaatechtnietstuk.Data
 {
@@ -45,5 +46,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
                 .HasMany(f => f.Items)
                 .WithMany(i => i.Filters);
         }
+
+
+        public DbSet<Verzamelwoede_Dezegaatechtnietstuk.Models.ItemFilterViewModel> ItemFilterViewModel { get; set; } = default!;
     }
 }

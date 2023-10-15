@@ -19,7 +19,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         public ItemsController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
-            _webHostEnvironment = webHostEnvironment;
+            _webHostEnvironment = webHostEnvironment; 
         }
 
         // GET: Items
