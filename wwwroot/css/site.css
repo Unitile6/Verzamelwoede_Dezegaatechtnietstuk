@@ -46,7 +46,7 @@ body {
 }
 
 .HistoryPage{
-    background-color: gray;
+    color-interpolation: linearRGB;
 }
 
 .navbar-brand-B
