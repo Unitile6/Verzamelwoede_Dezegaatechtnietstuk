@@ -34,12 +34,11 @@ logo {
 }
 
 .borderDemo {
-    border: 4px solid #1C6EA4;
+    outline: 4px solid rgba(194,194,194,0.77);
+    outline-offset: 0px;
 }
-
-.image-container {
-    border: 2px solid #000; /* 2px wide solid border with a black color */
-    display: inline-block; /* This ensures the container wraps the image */
-    padding: 10px; /* Optional: Add some padding around the image */
+.emoji{
+    text-align: center; 
+    justify-content: center;
+    width: 100%;
 }
-
