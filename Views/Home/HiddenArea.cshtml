@@ -2,8 +2,55 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 }
 <div>
     <p>Je hebt het eerste geheim gevonden!</p>
 </div>
+<!DOCTYPE html>
+<html>
+<head>
+    <link id="stylesheet" rel="stylesheet" type="text/css" href="FlatBS.css"> <!-- Default stylesheet -->
+</head>
+<body>
+    <select id ="styleSelect" class="btnGroupDrop3">
+        <option value="FlatBS.css">Flat</option>
+        <option value="flatly.css">Flatly</option>
+        <option value="NeutronBS.css">Neutron</option>
+        <!-- Add more options for each stylesheet -->
+    </select>
+</body>
+</html>
+<script>
+    //$('#mycss').css('background-color', '#FFFFFF').css('padding', '10px');
+
+
+
+
+    //On Button Click - changes background on click...
+    $('#change').click(function () {
+        $('body').css('background-color', $('#color').val());
+    });
+
+
+    //On Textbox Change - changes background when the textbox changes...
+    $('#color').change(function () {
+        $('body').css('background-color', $(this).val());
+    });
+
+
+
+
+    //const styleSelect = document.getElementById('styleSelect');
+    //const stylesheet = document.getElementById('stylesheet');
+
+    //styleSelect.addEventListener('change', function () {
+    //    const selectedStyle = styleSelect.value;
+    //    stylesheet.setAttribute('href', selectedStyle);
+    //    // Store the user's selection in a cookie or localStorage to remember their choice (optional).
+    //});
+</script>
+
+
