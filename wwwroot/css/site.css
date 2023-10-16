@@ -22,9 +22,9 @@ body {
 }
 
 .logo {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 20px;
+    width: 32px;
+    height: 32px;
+/*    margin-bottom: 20px;  Deze zorgde ervoor dat de header en footer te groot werden! */
     align-content: flex-end;
     justify-content: end;
 }
@@ -54,6 +54,18 @@ body {
     font-size: 20px;
     color: red;
 }
+
+.Gridstuff {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /*Zou wellicht nog dynamisch sized kunnen worden o.b.v. aantal filters.*/
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+   /* gap: 2px 2px;*/
+    /*    gap: 80px 20px;*/
+    grid-auto-flow: row;
+    grid-template-areas:
+        "Area Area Area Area"
+        "Area Area Area Area";
+}
 /* De nieuwe container maakte het kapot. Dus moet zijn eigen classname krijgen
 .container {
     display: grid;
@@ -66,6 +78,7 @@ body {
         "Text Text Image Image"
         "Filters Filters Filters Filters";
 }
+
 
 .Image {
     grid-area: Image;
