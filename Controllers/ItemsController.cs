@@ -66,6 +66,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         {
             if (ModelState.IsValid)
             {
+                // De code van de pictures in ontvangen van een klasgenoot. Ik heb er aan moeten tweaken om het geheel werkend te krijgen, gezien de Create view 
+                // Telkens stuk ging en ook filter en categorie-koppelingen verdwenen na de initiële submit. Zowel foto als object worden niet aangemaakt.
                 if (picture != null && picture.Length > 0)
                 {
                     // Genereer een unieke bestandsnaam om conflicten te voorkomen

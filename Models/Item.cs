@@ -33,7 +33,7 @@ namespace Verzamelwoede_NonBroken.Models
         /// <summary>
         /// Filters for the Item.
         /// </summary>
-        public ICollection<Filter> Filters { get; set; }
+        public ICollection<Filter>? Filters { get; set; }
 
         /// <summary>
         /// Image url.
