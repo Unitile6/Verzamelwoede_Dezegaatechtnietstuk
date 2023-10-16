@@ -40,6 +40,12 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             var item = await _context.Item
                 .Include(i => i.Category)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            //var itemB = await _context.Item
+            //    .Include(i => i.Filters)
+            //    .ThenInclude(u => u.Filters)
+            //    .Where(Item.id ==  id);
+
             if (item == null)
             {
                 return NotFound();
@@ -62,34 +68,36 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile picture)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item)
         {
-            if (ModelState.IsValid)
+            // Picture mag niet null zijn; betreft de IFormFile picture. Dus deze moet overbrugd worden.
+            //IFormFile picture
+            if (ModelState.IsValid) 
             {
                 // De code van de pictures in ontvangen van een klasgenoot. Ik heb er aan moeten tweaken om het geheel werkend te krijgen, gezien de Create view 
                 // Telkens stuk ging en ook filter en categorie-koppelingen verdwenen na de initiële submit. Zowel foto als object worden niet aangemaakt.
-                if (picture != null && picture.Length > 0)
-                {
-                    // Genereer een unieke bestandsnaam om conflicten te voorkomen
-                    string uniqueFileName = Guid.NewGuid().ToString() + "_" + picture.FileName;
-                    // Bepaal het pad waar het bestand moet worden opgeslagen binnen de wwwroot-map
-                    string imagesFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                    // Controleer of de map bestaat, zo niet, maak deze aan
-                    if (!Directory.Exists(imagesFolder))
-                    {
-                        Directory.CreateDirectory(imagesFolder);
-                    }
+                //if (picture != null && picture.Length > 0)
+                //{
+                //    // Genereer een unieke bestandsnaam om conflicten te voorkomen
+                //    string uniqueFileName = Guid.NewGuid().ToString() + "_" + picture.FileName;
+                //    // Bepaal het pad waar het bestand moet worden opgeslagen binnen de wwwroot-map
+                //    string imagesFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                //    // Controleer of de map bestaat, zo niet, maak deze aan
+                //    if (!Directory.Exists(imagesFolder))
+                //    {
+                //        Directory.CreateDirectory(imagesFolder);
+                //    }
 
-                    // Bepaal het volledige pad van het bestand
-                    string filePath = Path.Combine(imagesFolder, uniqueFileName);
-                    // Kopieer het bestand naar de opgegeven locatie
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await picture.CopyToAsync(stream);
-                    }
-                    // Wijs de bestandsnaam toe aan het 'Picture'-veld van het item
-                    item.Imageurl = uniqueFileName;
-                }
+                //    // Bepaal het volledige pad van het bestand
+                //    string filePath = Path.Combine(imagesFolder, uniqueFileName);
+                //    // Kopieer het bestand naar de opgegeven locatie
+                //    using (var stream = new FileStream(filePath, FileMode.Create))
+                //    {
+                //        await picture.CopyToAsync(stream);
+                //    }
+                //    // Wijs de bestandsnaam toe aan het 'Picture'-veld van het item
+                //    item.Imageurl = uniqueFileName;
+                //}
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -193,5 +201,29 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         {
           return (_context.Item?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+        [HttpPost]
+        [Route("/Images/Upload")] // Added in.
+        public IActionResult Upload(IFormFile imageFile)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                // Determine the path where you want to save the image.
+                string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", imageFile.FileName);
+
+                // Save the image file.
+                using (var stream = new FileStream(imagePath, FileMode.Create))
+                {
+                    imageFile.CopyTo(stream);
+                }
+
+                // You should handle additional logic here, like storing the file path in a database.
+            }
+
+            // Redirect or return a response to the client.
+            return RedirectToAction("SomeAction");
+        }
+
     }
 }
