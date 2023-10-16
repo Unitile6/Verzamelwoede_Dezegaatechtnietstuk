@@ -15,7 +15,10 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <img src="images/logo.png" class="logo" />
+                <img src="images/logo.png" class="logo" usemap="#homelogo"/>
+                <map name="homelogo">
+                    <area shape="circle" coords="16,16,10" href="Home" alt="nop.">
+                </map>
                 <a class="navbar-brand-B" asp-area="" asp-controller="Home" asp-action="Index">Less Is More</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +93,7 @@
         </div>
         <img src="images/logo.png" class="logo" usemap="#workmap" />
         <map name="workmap">
-            <area shape="circle" coords="25,25,10" href="#" onclick="myFunction()" alt="nop.">
+            <area shape="circle" coords="16,16,10" href="#" onclick="myFunction()" alt="nop.">
         </map>
 
         <script>
