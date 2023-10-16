@@ -13,6 +13,8 @@ namespace Verzamelwoede_NonBroken.Models
         /// <summary>
         /// Name of the Category
         /// </summary>
+        [Required]
+        [StringLength(12, MinimumLength = 2, ErrorMessage = "Category must be between 2 and 12 characters!")]
         public string? Name { get; set; }
 
         /// <summary>

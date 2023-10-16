@@ -38,7 +38,7 @@ namespace Verzamelwoede_NonBroken.Models
         /// <summary>
         /// Image url.
         /// </summary>
-        public string? Imageurl { get; set; }
+        public string? Imageurl { get; set; } // Waarom geeft 'ie aan dat de picture required is?
 
         /// <summary>
         /// Price associated with the item.
