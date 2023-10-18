@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Verzamelwoede_NonBroken.Models;
 using Verzamelwoede_Dezegaatechtnietstuk.Models;
 using System.Configuration;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Verzamelwoede_Dezegaatechtnietstuk.Data
 {
@@ -18,7 +19,15 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Filter> Filter { get; set; }
 
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.LogTo(Console.WriteLine) // Console zonder logfiltering.
+ .EnableSensitiveDataLogging();
+ //           optionsBuilder.LogTo(WriteLine, // Console met log-filtering
+ //new[] { RelationalEventId.CommandExecuting })
+ //.EnableSensitiveDataLogging();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
