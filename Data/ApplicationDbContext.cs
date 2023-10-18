@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Verzamelwoede_NonBroken.Models;
 using Verzamelwoede_Dezegaatechtnietstuk.Models;
+using System.Configuration;
 
 namespace Verzamelwoede_Dezegaatechtnietstuk.Data
 {
@@ -16,6 +17,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
         public DbSet<Item> Item { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Filter> Filter { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

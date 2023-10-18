@@ -225,5 +225,24 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             return RedirectToAction("SomeAction");
         }
 
+
+        public IActionResult ItemsWithValueLessThan(float? value)
+        {
+            if (!value.HasValue)
+            {
+                return BadRequest("You must pass a value!");
+            }
+            IEnumerable<Item> model = _context.Item
+                .Include(p => p.Category)
+                .Include(p => p.Name)
+                .Where(p => p.Value > value);
+
+            if (!model.Any())
+            {
+                return NotFound($"No items found with a value under {value:C}.");
+            }
+            ViewData["Value"] = value.Value.ToString("C");
+            return View(model);
+        }
     }
 }

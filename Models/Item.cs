@@ -1,4 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using static System.IO.Directory;
+using static System.IO.Path;
+using static System.Environment;
 
 namespace Verzamelwoede_NonBroken.Models
 {
@@ -59,6 +64,36 @@ namespace Verzamelwoede_NonBroken.Models
         {
 
         }
+        
+        public void DownloadOverview()
+        {
+            // From C# 11 and .NET7 book; directory handling
 
+            SectionTitle("Managing directories"); // No method found.
+            // define a directory path for a new folder
+            // starting in the user's folder
+            string newFolder = Combine(GetFolderPath(SpecialFolder.Personal), "NewFolder");
+            Console.WriteLine($"Working with: {newFolder}");
+            // check if it exists
+            Console.WriteLine($"Does it exist? {Path.Exists(newFolder)}");
+            // create directory 
+            Console.WriteLine("Creating it...");
+            CreateDirectory(newFolder);
+            Console.WriteLine($"Does it exist? {Path.Exists(newFolder)}");
+            Console.Write("Confirm the directory exists, and then press ENTER: ");
+            Console.ReadLine();
+            // delete directory 
+            Console.WriteLine("Deleting it...");
+            Delete(newFolder, recursive: true);
+            Console.WriteLine($"Does it exist? {Path.Exists(newFolder)}");
+        
+            // Next: add functionality 
+        
+        }
+
+        private void SectionTitle(string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
