@@ -23,10 +23,12 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.LogTo(Console.WriteLine) // Console zonder logfiltering.
- .EnableSensitiveDataLogging();
- //           optionsBuilder.LogTo(WriteLine, // Console met log-filtering
- //new[] { RelationalEventId.CommandExecuting })
- //.EnableSensitiveDataLogging();
+                .EnableSensitiveDataLogging();
+            //           optionsBuilder.LogTo(WriteLine, // Console met log-filtering
+            //new[] { RelationalEventId.CommandExecuting })
+            //.EnableSensitiveDataLogging();
+
+            //optionsBuilder.UseLazyLoadingProxies(); // p. 471, mist de package. using werkt niet.
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

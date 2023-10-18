@@ -27,6 +27,11 @@ namespace Verzamelwoede_NonBroken.Models
         /// </summary>
         public ICollection<Item>? Items { get; set;}
 
+        /// <summary>
+        /// How does the Category influence the items' value?
+        /// </summary>
+        public float? ValueFactor { get; set; }
+
         public Category() 
         { 
         
