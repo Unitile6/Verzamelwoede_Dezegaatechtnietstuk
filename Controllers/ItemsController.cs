@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -84,8 +85,10 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile image)
         {
+            var id = item.Imageurl;
+            var Filters = item.Filters;
             // Picture mag niet null zijn; betreft de IFormFile picture. Dus deze moet overbrugd worden.
             //IFormFile picture
             if (ModelState.IsValid) 
