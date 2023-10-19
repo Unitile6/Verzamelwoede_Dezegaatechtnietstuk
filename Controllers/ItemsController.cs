@@ -140,13 +140,13 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             var item = await _context.Item.FindAsync(id);
             if (item == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Id", item.CategoryId);
+            //ViewData["CategoryId"] = new SelectList(_context.Category, "Name", "Id", item.CategoryId); // Older wrong version.
             return View(item);
         }
 
