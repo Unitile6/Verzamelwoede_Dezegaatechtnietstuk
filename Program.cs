@@ -27,6 +27,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
+                //app.UseSwagger();
+                //app.UseSwaggerUI();
             }
             else
             {
@@ -41,6 +43,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
             app.UseRouting();
 
             app.UseAuthorization();
+            //API Route
+            app.MapControllers();
 
             app.MapControllerRoute(
                 name: "default",
