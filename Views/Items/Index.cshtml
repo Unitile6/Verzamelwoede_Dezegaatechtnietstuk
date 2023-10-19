@@ -78,7 +78,9 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
+                @if(item.Category != null){
                 @Html.DisplayFor(modelItem => item.Category.Name)
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Imageurl)
