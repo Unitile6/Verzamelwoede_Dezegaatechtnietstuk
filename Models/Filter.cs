@@ -27,7 +27,7 @@ namespace Verzamelwoede_NonBroken.Models
 
         public Filter()
         {
-
+            Name = "newFilter";
         }
 
     }

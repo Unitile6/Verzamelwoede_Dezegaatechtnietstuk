@@ -13,7 +13,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20231016133832_nugetb")]
-    partial class nugetb
+    partial class Nugetb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
