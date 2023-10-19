@@ -80,6 +80,14 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             return View();
         }
 
+        public IActionResult GetCategoryItems(int chosencategoryid)
+        {
+            var itemsincategory = _context.Item
+                .Where(i => i.CategoryId == chosencategoryid)
+                .ToList();  // Springt erin.
+            return View(itemsincategory);
+        }
+
         // POST: Items/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.

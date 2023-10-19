@@ -1,24 +1,11 @@
-﻿@model IEnumerable<Verzamelwoede_NonBroken.Models.Category>
+﻿@model IEnumerable<Verzamelwoede_NonBroken.Models.Item>
 
 @{
-    ViewData["Title"] = "Categories";
-    if (Model.Count() == 0 || Model.Count() == 1)
-    {
-        <h1>Category</h1>
-    }
-    else
-    {
-        <h1>Categories</h1>
-    }
+    ViewData["Title"] = "GetCategoryItems";
 }
 
+<h1>GetCategoryItems</h1>
 
-
-
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -43,8 +30,6 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    @Html.ActionLink("Listed Items","GetCategoryItems","Items", new {chosencategoryid = item.Id})
-@*                    <a asp-action="GetCategoryItems" asp-route-id="@item.Id">Listed Items</a> |*@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
