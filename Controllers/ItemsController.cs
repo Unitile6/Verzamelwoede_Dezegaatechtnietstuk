@@ -26,6 +26,22 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Item.Include(i => i.Category);
+
+            // Add Index info filters
+            var itemFilters = _context.ItemFilter
+                .Include(ifv => ifv.Item)
+                .Include(ifv => ifv.Filter)
+                .ToList();
+
+            var itemsWithFilters = itemFilters
+                .GroupBy(ifv => ifv.Item)
+                .Select(group => new
+                {
+                    Item = group.Key,
+                    Filters = group.Select(ifv => ifv.Filter).ToList()
+                })
+                .ToList();
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -74,12 +90,12 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             //IFormFile picture
             if (ModelState.IsValid) 
             {
-                // De code van de pictures in ontvangen van een klasgenoot. Ik heb er aan moeten tweaken om het geheel werkend te krijgen, gezien de Create view 
-                // Telkens stuk ging en ook filter en categorie-koppelingen verdwenen na de initiële submit. Zowel foto als object worden niet aangemaakt.
-                //if (picture != null && picture.Length > 0)
+                //De code van de pictures in ontvangen van een klasgenoot. Ik heb er aan moeten tweaken om het geheel werkend te krijgen, gezien de Create view
+                //Telkens stuk ging en ook filter en categorie - koppelingen verdwenen na de initiële submit.Zowel foto als object worden niet aangemaakt.
+                //if (image != null && image.Length > 0)
                 //{
                 //    // Genereer een unieke bestandsnaam om conflicten te voorkomen
-                //    string uniqueFileName = Guid.NewGuid().ToString() + "_" + picture.FileName;
+                //    string uniqueFileName = Guid.NewGuid().ToString() + "_" + image.FileName;
                 //    // Bepaal het pad waar het bestand moet worden opgeslagen binnen de wwwroot-map
                 //    string imagesFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
                 //    // Controleer of de map bestaat, zo niet, maak deze aan
@@ -93,7 +109,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
                 //    // Kopieer het bestand naar de opgegeven locatie
                 //    using (var stream = new FileStream(filePath, FileMode.Create))
                 //    {
-                //        await picture.CopyToAsync(stream);
+                //        await image.CopyToAsync(stream);
                 //    }
                 //    // Wijs de bestandsnaam toe aan het 'Picture'-veld van het item
                 //    item.Imageurl = uniqueFileName;

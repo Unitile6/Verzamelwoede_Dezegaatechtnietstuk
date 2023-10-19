@@ -18,7 +18,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
         public DbSet<Item> Item { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Filter> Filter { get; set; }
-
+        public DbSet<ItemFilterViewModel> ItemFilter { get; set; } //Ontbrak voor n:n gedrag.
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
