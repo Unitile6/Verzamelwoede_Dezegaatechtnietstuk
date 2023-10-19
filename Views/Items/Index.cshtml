@@ -13,6 +13,31 @@
     <a asp-action="Index" asp-route-favourite="true">Toon favorieten</a>
 @*    <a asp-action="Index">Terug naar lijst</a>*@
 </div>
+<script>
+    function downloadPage() {
+        // Maak een Blob-object van de huidige webpagina.
+        const html = document.documentElement.outerHTML;
+        const blob = new Blob([html], { type: "text/html" });
+
+        // Maak een URL voor het Blob-object.
+        const url = window.URL.createObjectURL(blob);
+
+        // Maak een link en stel de attributen in voor download.
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Itemlist.html";
+
+        // Simuleer een klik op de link om te downloaden.
+        a.click();
+
+        // Maak de URL en het link-element vrij.
+        window.URL.revokeObjectURL(url);
+    }
+</script>
+<body>
+    <p>Klik op onderstaande knop om de webpagina te downloaden:</p>
+    <button onclick="downloadPage()">Download Page</button>
+</body>
 <table class="table">
     <thead>
         <tr>
