@@ -5,7 +5,7 @@
 namespace Verzamelwoede_Dezegaatechtnietstuk.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class nugetc : Migration
+    public partial class Nugetc : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
