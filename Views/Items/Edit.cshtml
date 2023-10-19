@@ -30,10 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Imageurl" class="control-label"></label>
-                <input asp-for="Imageurl" class="form-control" type="file" name="Imageurl" enctype="multipart/form-data" />
-                @*                    <input asp-for="Imageurl" class="form-control" type="submit" value="Upload Image"/>*@
-                <input type="button" value="Upload Image" onclick="UploadImage()">
-
+                <input asp-for="Imageurl" class="form-control" />
                 <span asp-validation-for="Imageurl" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -50,6 +47,11 @@
                 <label asp-for="Value" class="control-label"></label>
                 <input asp-for="Value" class="form-control" />
                 <span asp-validation-for="Value" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Favourite" /> @Html.DisplayNameFor(model => model.Favourite)
+                </label>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
