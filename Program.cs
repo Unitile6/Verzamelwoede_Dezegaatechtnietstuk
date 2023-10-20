@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Verzamelwoede_Dezegaatechtnietstuk.Data;
 
+
 namespace Verzamelwoede_Dezegaatechtnietstuk
 {
     public partial class Program
@@ -21,14 +22,21 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            //builder.Services.AddSwaggerGen();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
-                //app.UseSwagger();
-                //app.UseSwaggerUI();
+               // app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {

@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using static System.IO.Directory;
 using static System.IO.Path;
 using static System.Environment;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace Verzamelwoede_NonBroken.Models
 {
@@ -94,6 +96,15 @@ namespace Verzamelwoede_NonBroken.Models
         private void SectionTitle(string v)
         {
             throw new NotImplementedException();
+        }
+
+        public static Item Read(int id)
+        {
+            //normaal read v.u. DAL. Nu v.u. de DbContext?
+            //DbContext dbContext = new DbContext();
+            //Item item = dbContext.Item.Include(m => m).Where(m => m.Id = id);
+            //return item;
+            return this;
         }
     }
 }

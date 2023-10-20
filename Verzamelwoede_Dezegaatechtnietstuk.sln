@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Verzamelwoede_Dezegaatechtnietstuk", "Verzamelwoede_Dezegaatechtnietstuk.csproj", "{85A903B9-AE2D-4C23-BC5A-44852BF49666}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerzamelWoedeAPI", "..\VerzamelWoedeAPI\VerzamelWoedeAPI.csproj", "{2B258E2F-FD16-4739-9B9F-E8A959412D73}"
+	ProjectSection(ProjectDependencies) = postProject
+		{85A903B9-AE2D-4C23-BC5A-44852BF49666} = {85A903B9-AE2D-4C23-BC5A-44852BF49666}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

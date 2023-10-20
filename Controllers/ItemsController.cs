@@ -27,21 +27,24 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Item.Include(i => i.Category);
+            
+            var applicationDbContextb = _context.Item.Include(v => v.Filters); // Wat als ik meerdere wil meegeven?
 
-            // Add Index info filters
-            var itemFilters = _context.ItemFilter
-                .Include(ifv => ifv.Item)
-                .Include(ifv => ifv.Filter)
-                .ToList();
 
-            var itemsWithFilters = itemFilters
-                .GroupBy(ifv => ifv.Item)
-                .Select(group => new
-                {
-                    Item = group.Key,
-                    Filters = group.Select(ifv => ifv.Filter).ToList()
-                })
-                .ToList();
+            //// Add Index info filters
+            //var itemFilters = _context.ItemFilter
+            //    .Include(ifv => ifv.Item)
+            //    .Include(ifv => ifv.Filter)
+            //    .ToList();
+
+            //var itemsWithFilters = itemFilters
+            //    .GroupBy(ifv => ifv.Item)
+            //    .Select(group => new
+            //    {
+            //        Item = group.Key,
+            //        Filters = group.Select(ifv => ifv.Filter).ToList()
+            //    })
+            //    .ToList();
 
             return View(await applicationDbContext.ToListAsync());
         }
