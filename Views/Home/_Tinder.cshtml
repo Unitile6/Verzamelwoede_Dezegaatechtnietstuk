@@ -1,0 +1,65 @@
+﻿@model Verzamelwoede_NonBroken.Models.Item
+
+@{
+    ViewData["Title"] = "View";
+}
+<h1>View</h1>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imageurl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imageurl)
+        </dd>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <title>Item Battle</title>
+        </head>
+        <body>
+            <div class="container">
+                <div class="item">
+                    <img src="item1.jpg" alt="Item 1">
+                    <h2>Item 1</h2>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <button class="winner-button">Pick this</button>
+                </div>
+                <div class="item">
+                    <img src="item2.jpg" alt="Item 2">
+                    <h2>Item 2</h2>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+                    <button class="winner-button">Pick this</button>
+                </div>
+            </div>
+        </body>
+        </html>
+    </dl>
+</div>
+<div>
+    <a asp-action="#">Load new items</a>
+</div>

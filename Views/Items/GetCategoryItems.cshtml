@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<Verzamelwoede_NonBroken.Models.Item>
 
 @{
-    ViewData["Title"] = "GetCategoryItems";
+    ViewData["Title"] = "Items in category:";
 }
 
-<h1>GetCategoryItems</h1>
-
+<h1>Items in category:</h1>
+@*<label asp-for="CategoryId" asp-items="Model.Categories" class="form-control"></label>*@
+@Html.DisplayNameFor(modelItem => modelItem.Category) <!-- Doet niet wat verwacht; geeft of Category of Name maar niet de echte naam vd category.-->
+<!-- Ook wel begrijpelijk, ik voer nu een LINQ uit... Ik moet de naam van de category op deze id. Maar ik heb het model Category niet.-->
 <table class="table">
     <thead>
         <tr>
@@ -26,11 +28,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
