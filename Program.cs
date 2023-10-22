@@ -19,7 +19,6 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-           // builder.Services.AddSwaggerGen();
 
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
