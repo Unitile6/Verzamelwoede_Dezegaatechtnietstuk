@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    var filters = ViewData["Filters"] as List<Filter>;
 }
 
 <h1>Create</h1>
@@ -55,8 +56,9 @@
                     <div class="Gridstuff">
                     @*<select asp-for="Filters" class="form-control">*@
                     <label asp-for="Filters" class="control-label"></label>
-                    @if(filters != null){
-                        foreach (var filter in filters)
+                        @if (filters != null)
+                        {
+                            foreach (var filter in filters)
                         {
                             <label class="grid-item">
                                 <input type="checkbox" name="filter" value="@filter" />
