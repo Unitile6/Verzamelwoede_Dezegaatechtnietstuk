@@ -44,6 +44,9 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Data
             modelBuilder.Entity<Filter>()
                 .Property(i => i.Name)
                 .HasMaxLength(20);
+            //modelBuilder.Entity<Item>()
+            //    .Property(i => i.Favourite)
+            //    .HasDefaultValue(false); // Bereikt niet het gewenste resultaat.
 
             // Voor de 1:n Item:Category Relatie
             modelBuilder.Entity<Item>()

@@ -1,23 +1,15 @@
-﻿@using Verzamelwoede_NonBroken.Models;
-@model Verzamelwoede_NonBroken.Models.Item
+﻿@model Verzamelwoede_NonBroken.Models.Item
 
 @{
     ViewData["Title"] = "Create";
-    var filters = ViewData["Filters"] as List<Filter>;
 }
-
-@*@using (Html.BeginForm("Create", "ControllerName", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <!-- Your form elements here -->
-    <input type="file" name="picture" />
-    <input type="submit" value="Submit" />
-}*@
 
 <h1>Create</h1>
 
 <h4>Item</h4>
 <hr />
-<div class="grid-container">
+<div class="row">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            <div class="Text">
@@ -85,6 +77,8 @@
             </div>
         </form>
     </div>
+</div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

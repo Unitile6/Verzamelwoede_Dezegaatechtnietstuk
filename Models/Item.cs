@@ -61,6 +61,10 @@ namespace Verzamelwoede_NonBroken.Models
         /// Perceived value associated with the item.
         /// </summary>
         public float? Value { get; set; }
+        /// <summary>
+        /// Set the item as favourite?
+        /// </summary>
+        public bool Favourite { get; set; } = false;
 
         public Item()
         {
