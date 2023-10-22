@@ -227,7 +227,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ItemExists(int id)
+        public bool ItemExists(int id)
         {
           return (_context.Item?.Any(e => e.Id == id)).GetValueOrDefault();
         }
