@@ -1,7 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Verzamelwoede_Dezegaatechtnietstuk.Data;
-
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace Verzamelwoede_Dezegaatechtnietstuk
 {
@@ -26,7 +30,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            //builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen();
 
 
             var app = builder.Build();
@@ -35,7 +39,7 @@ namespace Verzamelwoede_Dezegaatechtnietstuk
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
-               // app.UseSwagger();
+                app.UseSwagger();
                 app.UseSwaggerUI();
             }
             else

@@ -98,8 +98,8 @@ namespace Verzamelwoede_Dezegaatechtnietstuk.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,CategoryId,Filters,Imageurl,Price,UsesPerYear,Value")] Item item, IFormFile image)
         {
-            var id = item.Imageurl;
-            var Filters = item.Filters;
+            var _picturedebug = item.Imageurl;
+            var _filtersdebug = item.Filters;
             // Picture mag niet null zijn; betreft de IFormFile picture. Dus deze moet overbrugd worden.
             //IFormFile picture
             if (ModelState.IsValid) 

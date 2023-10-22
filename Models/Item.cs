@@ -98,13 +98,13 @@ namespace Verzamelwoede_NonBroken.Models
             throw new NotImplementedException();
         }
 
-        public static Item Read(int id)
-        {
-            //normaal read v.u. DAL. Nu v.u. de DbContext?
-            //DbContext dbContext = new DbContext();
-            //Item item = dbContext.Item.Include(m => m).Where(m => m.Id = id);
-            //return item;
-            return this;
-        }
+        //public static Item Read(int id)
+        //{
+        //    //normaal read v.u. DAL. Nu v.u. de DbContext?
+        //    //DbContext dbContext = new DbContext();
+        //    //Item item = dbContext.Item.Include(m => m).Where(m => m.Id = id);
+        //    //return item;
+        //    return this;
+        //}
     }
 }
